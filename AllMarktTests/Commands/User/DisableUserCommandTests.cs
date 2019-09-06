@@ -24,7 +24,7 @@ namespace AllMarktTests.Commands.User
             //Arrange
             var newUser = GetNewUser();
             await AllMarktContextIM.Users.AddAsync(newUser);
-            await AllMarktContextIM.SaveChangesAsync(default);
+            await AllMarktContextIM.SaveChangesAsync();
 
             var existingUser = AllMarktContextIM.Users.First();
             var disableUserCommand = new DisableUserCommand { Id = existingUser.Id };
@@ -34,7 +34,7 @@ namespace AllMarktTests.Commands.User
 
             //Assert
             var result = AllMarktContextIM.Users.FirstOrDefault();
-            result.IsEnabled.Should().BeFalse();
+            (result != null && result.IsEnabled).Should().BeFalse();
         }
 
         private AllMarkt.Entities.User GetNewUser()

@@ -335,7 +335,8 @@
                 for (var i = 0; i < order.orderItems.length; i++) {
                     var orderItemVM = {
                         name: order.orderItems[i].product.name,
-                        amount: order.orderItems[i].quantity
+                        amount: order.orderItems[i].quantity,
+                        price: parseFloat(order.orderItems[i].product.price) * parseFloat(order.orderItems[i].quantity)
                     };
                     orderVM.orderItems.push(orderItemVM);
                 }

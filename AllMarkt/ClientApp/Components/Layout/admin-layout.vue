@@ -1,6 +1,6 @@
 <template>
     <div class="mx-5 my-3">
-        <h1 v-if ="this.currentUser !== null">Mr {{this.currentUser.displayName}}, we've been expecting you...</h1>
+        <h1 v-if="this.currentUser !== null">Mr {{this.currentUser.displayName}}, we've been expecting you...</h1>
         <!--<h4 ></h4>-->
 
         <ul class="nav nav-pills">
@@ -41,15 +41,16 @@
             </li>-->
 
             <li class="nav-item">
-                <a class="nav-link dropdown-toggle" :class="{active: $route.path.includes('/orders/')}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
+                <!--<a class="nav-link dropdown-toggle" :class="{active: $route.path.includes('/orders/')}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">
                         <router-link to="/orders/history">Order history</router-link>
                     </a>
                     <a class="dropdown-item" href="#">
-                        <router-link to="/orders">Orders</router-link>
+
                     </a>
-                </div>
+                </div>-->
+                <router-link to="/orders" class="nav-link" active-class="active">Orders</router-link>
             </li>
 
             <li class="nav-item">
@@ -64,9 +65,9 @@
             <li v-if="!(this.currentUser === null || this.currentUser.token === null)" class="nav-item">
                 <button v-on:click="logout" class="nav-link btn " active-class="active">Logout</button>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <router-link to="/profileSettings" class="nav-link" active-class="active">Profile Settings</router-link>
-            </li>
+            </li>-->
             <li v-if="this.currentUser === null || this.currentUser.token === null" class="nav-item">
                 <router-link to="/register" class="nav-link" active-class="active">Register</router-link>
             </li>

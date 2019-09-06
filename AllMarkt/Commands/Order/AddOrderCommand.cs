@@ -77,6 +77,7 @@ namespace AllMarkt.Commands.Order
                 orderItem.Id = orderItemVM.Id;
                 orderItem.Name = orderItemVM.Name;
                 orderItem.Amount = orderItemVM.Amount;
+                orderItem.Price = orderItemVM.Price;
                 orderItem.Order = order;
                 result.Add(orderItem);
             }

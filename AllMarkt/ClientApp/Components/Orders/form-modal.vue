@@ -279,12 +279,9 @@
                         this.validateItem(item);
                         orderItemsList.push(item);
                     }
-                    console.log(orderItemsList);
                     if (this.isValid()) {
                         this.order.orderItems = orderItemsList;
-                        console.log(orderItemsList);
                         if (this.order.id == 0) {
-                            console.log(orderItemsList);
                             await Api.orders.addAsync(this.order);
                         }
                         else {
@@ -394,19 +391,19 @@
             isValid() {
                 var valid = true;
                 if (this.isValidClass.shopId != null && this.order.shopId === 0)
-                    valid = false, console.log("1");
+                    valid = false;
                 if (this.errorMessages.customerId != null && this.order.customerId === 0)
-                    valid = false, console.log("2");
+                    valid = false;
                 if (this.errorMessages.phone != null && this.order.deliveryPhoneNumber === "")
-                     valid =   false, console.log("3");
+                     valid =   false;
                 if (this.errorMessages.address != null && this.order.deliveryAddress === "")
-                     valid =   false, console.log("4");
+                     valid =   false;
                 if (this.errorMessages.notes != null && this.order.additionalNotes === "")
-                    valid = false, console.log("5");
+                    valid = false;
                 if (this.errorMessages.awb != null && this.order.awb === "")
-                    valid = false, console.log("6");
+                    valid = false;
                 if (this.errorMessages.items != null && this.order.orderItems === null)
-                     valid =   false, console.log("7");
+                     valid =   false;
 
                 return valid;
 

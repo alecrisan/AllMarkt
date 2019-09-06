@@ -56,6 +56,9 @@ namespace AllMarkt.Controller
         [HttpPost]
         public async Task<ActionResult> AddAsync(OrderViewModel order)
         {
+            var userId = _claimsGetter.UserId(User?.Claims);
+            var customer = await _usersService.GetCustomerByUserIdAsync(userId);
+            order.CustomerId = customer.Id;
             await _ordersService.SaveAsync(order);
             return NoContent();
         }

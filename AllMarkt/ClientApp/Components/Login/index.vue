@@ -77,7 +77,8 @@
             return {
                 user: {
                     email: "",
-                    password: ""
+                    password: "",
+                    isEnabled: null
                 },
                 errors: {
                     email: null,
@@ -120,6 +121,7 @@
             async loginAsync() {
                 try {
                     var output = await Api.login.loginAsync(this.user);
+                    this.user.isEnabled = true;
                     localStorage.setItem("currentUser", JSON.stringify(output.data));
                     this.errors.invalidData = null;
                     if (output.data.userRole === "Shop") {

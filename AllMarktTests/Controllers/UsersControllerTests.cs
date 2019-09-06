@@ -305,9 +305,13 @@ namespace AllMarktTests.Controllers
         public async Task GetShopByUserIdAsync_Returns_OkObjectResult()
         {
             //Arrange
+            int userId = 1;
+            _mockClaimsGetter
+                .Setup(x => x.UserId(It.IsAny<IEnumerable<Claim>>()))
+                .Returns(userId);
 
             //Act
-            var result = await _usersController.GetShopByUserIdAsync(1);
+            var result = await _usersController.GetShopByUserIdAsync();
 
             //Assert
             result.Should().BeOfType<OkObjectResult>();
@@ -323,7 +327,7 @@ namespace AllMarktTests.Controllers
             .Returns(userId);
 
             //Act
-            await _usersController.GetShopByUserIdAsync(1);
+            await _usersController.GetShopByUserIdAsync();
 
             //Assert
             _mockUserService.Verify(x => x.GetShopByUserIdAsync(userId), Times.Once);
@@ -354,9 +358,13 @@ namespace AllMarktTests.Controllers
             _mockUserService
                 .Setup(x => x.GetShopByUserIdAsync(1))
                 .Returns(Task.FromResult(shop));
+            int userId = 1;
+            _mockClaimsGetter
+                .Setup(x => x.UserId(It.IsAny<IEnumerable<Claim>>()))
+                .Returns(userId);
 
             //Act
-            var result = await _usersController.GetShopByUserIdAsync(1);
+            var result = await _usersController.GetShopByUserIdAsync();
 
             //Assert
             result.Should().NotBeNull();

@@ -181,7 +181,7 @@ namespace AllMarkt.Services
                 UserRole = userViewModel.UserRole
             };
 
-            return _mediator.Send(registerUserCommand, default);
+            return _mediator.Send(registerUserCommand, default(CancellationToken));
         }
 
         public Task DisableUserByIdAsync(UserEditViewModel userEditViewModel)

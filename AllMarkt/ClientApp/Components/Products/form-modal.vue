@@ -71,7 +71,7 @@
                             </select>
                         </div>
 
-                        <div class="input-group">
+                        <!--<div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                             </div>
@@ -80,7 +80,7 @@
                                        aria-describedby="inputGroupFileAddon01">
                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                             </div>
-                        </div>
+                        </div>-->
 
                     </form>
                 </div>

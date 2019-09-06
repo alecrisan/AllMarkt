@@ -57,7 +57,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<GetAllProductsByShopQuery>(), default), Times.Once);
+            x.Send(It.IsAny<GetAllProductsByShopQuery>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]

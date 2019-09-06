@@ -1,4 +1,5 @@
-﻿using AllMarkt.Commands.ShopCategory;
+﻿using System.Threading;
+using AllMarkt.Commands.ShopCategory;
 using AllMarkt.Services;
 using AllMarkt.ViewModels;
 using MediatR;
@@ -34,7 +35,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<AddShopCategoryLinkCommand>(), default), Times.Once());
+            x.Send(It.IsAny<AddShopCategoryLinkCommand>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -52,7 +53,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<DeleteShopCategoryLinkCommand>(), default), Times.Once());
+            x.Send(It.IsAny<DeleteShopCategoryLinkCommand>(), default(CancellationToken)), Times.Once());
         }
     }
 }

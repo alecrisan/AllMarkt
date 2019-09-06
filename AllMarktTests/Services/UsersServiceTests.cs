@@ -46,7 +46,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<GetAllUsersQuery>(), default), Times.Once());
+                x.Send(It.IsAny<GetAllUsersQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<GetUserByIdQuery>(), default), Times.Once());
+                x.Send(It.IsAny<GetUserByIdQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace AllMarktTests.Services
             await _usersService.GetShopByIdAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetShopByIdQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetShopByIdQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace AllMarktTests.Services
             await _usersService.GetCustomerByIdAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetCustomerByIdQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetCustomerByIdQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace AllMarktTests.Services
             await _usersService.GetShopByUserIdAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetShopByUserIdQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetShopByUserIdQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -107,7 +107,7 @@ namespace AllMarktTests.Services
             await _usersService.GetCustomerByUserIdAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetCustomerByUserIdQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetCustomerByUserIdQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<AddUserCommand>(), default), Times.Once());
+                x.Send(It.IsAny<AddUserCommand>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace AllMarktTests.Services
             //Assert
             _mockMediator.Verify(x => x.Send(It.Is<AddUserCommand>
                 (mo => mo.Password == "5dc088487fb505024591604c00eadbd8607ea049dc46857eb803b45e205640f6")
-                , default), Times.Once());
+                , default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -149,7 +149,7 @@ namespace AllMarktTests.Services
             await _usersService.EditAsync(userEditViewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<EditUserCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<EditUserCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -162,7 +162,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<DeleteUserCommand>(), default), Times.Once());
+                x.Send(It.IsAny<DeleteUserCommand>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -176,7 +176,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<DisableUserCommand>(), default), Times.Once());
+            x.Send(It.IsAny<DisableUserCommand>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -189,7 +189,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<GetAllShopsQuery>(), default), Times.Once());
+                x.Send(It.IsAny<GetAllShopsQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -202,7 +202,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<GetAllCustomersQuery>(), default), Times.Once());
+            x.Send(It.IsAny<GetAllCustomersQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -215,7 +215,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-            x.Send(It.IsAny<GetShopsByCategoryIdQuery>(), default), Times.Once);
+            x.Send(It.IsAny<GetShopsByCategoryIdQuery>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -284,7 +284,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<GetUserByEmailAndPasswordQuery>(), default), Times.Once());
+                x.Send(It.IsAny<GetUserByEmailAndPasswordQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -304,7 +304,7 @@ namespace AllMarktTests.Services
             await _usersService.EditCustomerAsync(customerViewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<EditCustomerCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<EditCustomerCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -327,7 +327,7 @@ namespace AllMarktTests.Services
             await _usersService.EditShopAsync(shopViewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<EditShopCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<EditShopCommand>(), default(CancellationToken)), Times.Once);
         }
 
 
@@ -343,7 +343,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<RegisterUserCommand>(), default), Times.Once());
+                x.Send(It.IsAny<RegisterUserCommand>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -358,7 +358,7 @@ namespace AllMarktTests.Services
             //Assert
             _mockMediator.Verify(x => x.Send(It.Is<RegisterUserCommand>
                 (mo => mo.Password == "5dc088487fb505024591604c00eadbd8607ea049dc46857eb803b45e205640f6")
-                , default), Times.Once());
+                , default(CancellationToken)), Times.Once());
         }
 
         private UserInputViewModel GetUserInputViewModel()

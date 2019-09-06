@@ -148,7 +148,6 @@
                     this.isCustomer = true;
                 }
 
-                console.log(shop);
 
                 if (this.isCustomer == true) {
                     this.user = {
@@ -216,6 +215,10 @@
 
             validatePhoneNumber() {
                 this.user.phoneNumberError = null;
+
+                if (this.user.phoneNumber === null)
+                    return;
+
                 if (this.user.phoneNumber[0] != '0')
                     this.user.phoneNumberError = "Phone number must start with a 0";
                 if (this.user.phoneNumber.length != 10)
@@ -230,6 +233,10 @@
 
             validateAddress() {
                 this.user.addressError = null;
+
+                if (this.user.address === null)
+                    return;
+
                 if (this.user.address.length > 255)
                     this.user.addressError = "Address too long (max 255 characters)";
 

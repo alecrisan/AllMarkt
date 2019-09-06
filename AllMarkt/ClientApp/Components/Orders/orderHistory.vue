@@ -81,11 +81,11 @@
                     var role = user.data.userRole;
                     if (role === "Customer") {
                         this.isCustomer = true;
-                        var customer = await Api.customers.getCustomerByUserIdAsync(user.data.id);
+                        //var customer = await Api.customers.getCustomerByUserIdAsync(user.data.id);
                         result = await Api.orders.getCustomerOrdersAsync();
                     } else {
                         this.isCustomer = false;
-                        var shop = await Api.shops.getShopByUserIdAsync(user.data.id)
+                        //var shop = await Api.shops.getShopByUserIdAsync(user.data.id)
                         result = await Api.orders.getShopOrdersAsync();
                     }
                     this.orders = result.data;

@@ -202,7 +202,7 @@
             },
 
             hide() {
-                console.log(this.isValid);
+               
                 this.selectedState = "Available";
                 $(this.$el).modal("hide");
             },
@@ -210,7 +210,7 @@
             selectCategory(productCategory) {
                 this.product.productCategoryId = productCategory.id;
                 this.product.productCategoryName = productCategory.name;
-                console.log(this.product.productCategoryName);
+              
             },
 
             validateName() {

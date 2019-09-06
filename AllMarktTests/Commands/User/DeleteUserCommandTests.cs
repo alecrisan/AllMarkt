@@ -24,7 +24,7 @@ namespace AllMarktTests.Commands.User
             //Arrange
             var newUser = GetNewUser();
             await AllMarktContextIM.Users.AddAsync(newUser);
-            await AllMarktContextIM.SaveChangesAsync(default);
+            await AllMarktContextIM.SaveChangesAsync();
 
             var existingUser = AllMarktContextIM.Users.First();
             var deleteUserCommand = new DeleteUserCommand { Id = existingUser.Id };
@@ -44,11 +44,11 @@ namespace AllMarktTests.Commands.User
             //Arrange
             var newUser = GetNewUser();       
             await AllMarktContextIM.Users.AddAsync(newUser);
-            await AllMarktContextIM.SaveChangesAsync(default);
+            await AllMarktContextIM.SaveChangesAsync();
 
             var adminUser = new AllMarkt.Entities.Admin { User = newUser };
             await AllMarktContextIM.Admins.AddAsync(adminUser);
-            await AllMarktContextIM.SaveChangesAsync(default);
+            await AllMarktContextIM.SaveChangesAsync();
 
             var existingUser = AllMarktContextIM.Users.First();
             var deleteUserCommand = new DeleteUserCommand { Id = existingUser.Id };

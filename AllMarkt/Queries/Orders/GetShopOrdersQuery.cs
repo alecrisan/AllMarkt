@@ -63,6 +63,7 @@ namespace AllMarkt.Queries.Orders
                 orderItemVM.Id = orderItem.Id;
                 orderItemVM.Name = orderItem.Name;
                 orderItemVM.Amount = orderItem.Amount;
+                orderItemVM.Price = orderItem.Price;
                 result.Add(orderItemVM);
             }
 

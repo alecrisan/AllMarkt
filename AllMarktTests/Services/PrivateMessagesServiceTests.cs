@@ -4,9 +4,9 @@ using AllMarkt.Services;
 using AllMarkt.ViewModels;
 using AllMarktTests.Queries;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -32,7 +32,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.GetAllSentPrivateMessagesByUserAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllSentPrivateMessagesByUserQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllSentPrivateMessagesByUserQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.GetAllReceivedPrivateMessagesByUserAsync(1);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllReceivedPrivateMessagesByUserQuery>(), default), Times.Once());
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllReceivedPrivateMessagesByUserQuery>(), default(CancellationToken)), Times.Once());
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.GetAllPrivateMessagesAsync();
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllPrivateMessagesQuery>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetAllPrivateMessagesQuery>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.GetPrivateMessageByIdAsync(id);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -92,7 +92,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<AddPrivateMessageCommand>(), default), Times.Once);
+                x.Send(It.IsAny<AddPrivateMessageCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.SavePrivateMessageAsync(privateMessageViewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<EditPrivateMessageCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<EditPrivateMessageCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -128,7 +128,7 @@ namespace AllMarktTests.Services
 
             //Assert
             _mockMediator.Verify(x =>
-                x.Send(It.IsAny<DeletePrivateMessageCommand>(), default), Times.Once);
+                x.Send(It.IsAny<DeletePrivateMessageCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -148,14 +148,14 @@ namespace AllMarktTests.Services
             };
 
             _mockMediator
-                .Setup(call => call.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default))
+                .Setup(call => call.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default(CancellationToken)))
                 .Returns(Task.FromResult(privateMessageViewModel));
 
             //Act
             await _privateMessagesService.UpdateOrDeletePrivateMessage(privateMessageViewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<EditPrivateMessageCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<EditPrivateMessageCommand>(), default(CancellationToken)), Times.Once);
         }
 
         [Fact]
@@ -174,7 +174,7 @@ namespace AllMarktTests.Services
                 DeletedBy = AllMarkt.Entities.DeletedBy.Sender
             };
             _mockMediator
-                .Setup(call => call.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default))
+                .Setup(call => call.Send(It.IsAny<GetPrivateMessageByIdQuery>(), default(CancellationToken)))
                 .Returns(Task.FromResult(privateMessageViewModel));
 
             var viewModel = new PrivateMessageViewModel
@@ -193,7 +193,7 @@ namespace AllMarktTests.Services
             await _privateMessagesService.UpdateOrDeletePrivateMessage(viewModel);
 
             //Assert
-            _mockMediator.Verify(x => x.Send(It.IsAny<DeletePrivateMessageCommand>(), default), Times.Once);
+            _mockMediator.Verify(x => x.Send(It.IsAny<DeletePrivateMessageCommand>(), default(CancellationToken)), Times.Once);
         }
     }
 }

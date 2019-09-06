@@ -64,6 +64,7 @@ namespace AllMarkt.Controller
             return Ok(userById);
         }
 
+        [AllowAnonymous]
         [HttpGet("customers/byUser")]
         public async Task<ActionResult> GetCustomerByUserIdAsync()
         {
@@ -71,6 +72,8 @@ namespace AllMarkt.Controller
             var customerById = await _usersService.GetCustomerByUserIdAsync(userId);
             return Ok(customerById);
         }
+
+        [AllowAnonymous]
         [HttpGet("customers/byId/{id}")]
         public async Task<ActionResult> GetCustomerByIdAsync(int id)
         {
@@ -79,8 +82,8 @@ namespace AllMarkt.Controller
         }
 
         [AllowAnonymous]
-        [HttpGet("shops/{id}")]
-        public async Task<ActionResult> GetShopByUserIdAsync(int id)
+        [HttpGet("shops/byUser")]
+        public async Task<ActionResult> GetShopByUserIdAsync()
         {
             var userId = _claimsGetter.UserId(User?.Claims);
             var shopById = await _usersService.GetShopByUserIdAsync(userId);
